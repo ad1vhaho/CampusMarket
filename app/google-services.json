@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "852178762308",
+    "firebase_url": "https://campusmarket-108de-default-rtdb.firebaseio.com",
+    "project_id": "campusmarket-108de",
+    "storage_bucket": "campusmarket-108de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852178762308:android:7c5b46d960adb5dec51a11",
+        "android_client_info": {
+          "package_name": "com.example.campusmarket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVjLVcCNzPlba47YOunaOu4liJHu7Gb08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

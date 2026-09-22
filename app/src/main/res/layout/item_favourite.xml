@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/campus_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivFavouriteImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="Favourite product image"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFavouriteTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/campus_text_black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/ivFavouriteImage"
+            app:layout_constraintStart_toEndOf="@id/ivFavouriteImage"
+            app:layout_constraintEnd_toStartOf="@id/btnRemoveFavourite" />
+
+        <TextView
+            android:id="@+id/tvFavouritePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/campus_green_dark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvFavouriteTitle"
+            app:layout_constraintStart_toEndOf="@id/ivFavouriteImage" />
+
+        <TextView
+            android:id="@+id/tvFavouriteCondition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/campus_text_grey"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/tvFavouritePrice"
+            app:layout_constraintStart_toEndOf="@id/ivFavouriteImage"
+            app:layout_constraintEnd_toStartOf="@id/btnRemoveFavourite" />
+
+        <ImageButton
+            android:id="@+id/btnRemoveFavourite"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Remove from favourites"
+            android:src="@drawable/ic_favourite"
+            app:tint="@color/campus_red"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

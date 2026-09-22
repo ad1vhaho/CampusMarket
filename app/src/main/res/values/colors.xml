@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- CampusMarket primary brand colours -->
+    <color name="campus_green_dark">#134E2D</color>
+    <color name="campus_green_light">#7AC74F</color>
+    <color name="campus_green_badge">#22C55E</color>
+
+    <!-- CampusMarket backgrounds -->
+    <color name="campus_background">#FFFFFF</color>
+    <color name="campus_background_grey">#F6F6F6</color>
+
+    <!-- CampusMarket text colours -->
+    <color name="campus_text_black">#111111</color>
+    <color name="campus_text_grey">#6B7280</color>
+
+    <!-- CampusMarket borders -->
+    <color name="campus_border_grey">#E5E7EB</color>
+
+    <!-- CampusMarket status colours -->
+    <color name="campus_red">#EF4444</color>
+
+    <!-- Standard colours -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

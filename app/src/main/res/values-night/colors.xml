@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="campus_green_dark">#7AC74F</color>
+    <color name="campus_green_light">#4C8C36</color>
+    <color name="campus_green_badge">#22C55E</color>
+    <color name="campus_background">#121212</color>
+    <color name="campus_background_grey">#1E1E1E</color>
+    <color name="campus_text_black">#F4F4F5</color>
+    <color name="campus_text_grey">#B4B4BC</color>
+    <color name="campus_border_grey">#3A3A3F</color>
+    <color name="campus_red">#FF6B6B</color>
+</resources>

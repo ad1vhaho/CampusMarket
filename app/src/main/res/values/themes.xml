@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.CampusMarket" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- CampusMarket primary colour -->
+        <item name="colorPrimary">@color/campus_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Background -->
+        <item name="android:windowBackground">@color/campus_background</item>
+        <item name="colorSurface">@color/campus_background</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+
+        <!-- Default text -->
+        <item name="android:textColorPrimary">@color/campus_text_black</item>
+        <item name="android:textColorSecondary">@color/campus_text_grey</item>
+
+    </style>
+</resources>
