@@ -67,16 +67,6 @@ The debug APK is created at `app/build/outputs/apk/debug/app-debug.apk`. Unit-te
 - Push to GitHub and confirm the **Android CI** workflow passes.
 - Submit the source ZIP, APK, repository link, and any screenshots/report required by the rubric.
 
-## Part 2 demonstration video
-
-Record the app running on a physical Android phone and demonstrate:
-
-1. Register a new email/password account, log out, then log in again. Firebase Authentication hashes and securely stores the password; the app never stores plain-text passwords.
-2. Open Settings and change dark mode, notification preference, language selection, profile name and password.
-3. Show products loading from the EscuelaJS REST API. Retrofit is the REST client and Glide is the external image-loading library.
-4. Publish a student listing, open My Listings, save a draft, search/filter products and add an item to favourites.
-5. With two registered accounts, publish using account A, open that student-created listing using account B, send a message, then log in as account A and reply.
-6. Show the unit-test results for `ProductFilterTest` and `InputValidatorTest` in Android Studio.
 
 Sample API catalogue products do not have CampusMarket seller accounts, so messaging is deliberately enabled only for student-created Firestore listings.
 
