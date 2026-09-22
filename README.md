@@ -84,15 +84,8 @@ The debug APK is created at `app/build/outputs/apk/debug/app-debug.apk`. Unit-te
 | `conversations` | Two-user conversation metadata |
 | `messages` | Individual chat messages |
 
-## Final submission checklist
-
-- Replace `google-services.json` after adding SHA fingerprints.
-- Deploy `firestore.rules`.
-- Run the unit tests and create the debug APK.
-- Test registration, login/reset, Google Sign-In, profile/password changes, filtering, favourites, draft/publish, and two-account chat on a device/emulator.
-- Confirm drafts are visible only to their seller and active listings are readable to authenticated users.
-- Push to GitHub and confirm the **Android CI** workflow passes.
-- Submit the source ZIP, APK, repository link, and any screenshots/report required by the rubric.
+##Video demonstration link 
+https://youtu.be/WZzDPLUCt5k  
 
 
 Sample API catalogue products do not have CampusMarket seller accounts, so messaging is deliberately enabled only for student-created Firestore listings.
