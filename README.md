@@ -14,30 +14,31 @@ CampusMarket is a native Android student marketplace written in Kotlin. Students
 - Firestore security rules
 - JUnit tests and GitHub Actions build/test workflow
 
-  ## Application Screenshots
+## Application Screenshots
 
 ### Login
-![Uploading Login.png.jpeg…]()
 
+![CampusMarket Login](login.jpg.jpeg)
 
 ### Home Marketplace
-![Uploading Home.png.jpeg…]()
 
+![CampusMarket Home](home.jpg.jpeg)
 
 ### Favourites
-![Uploading Favourites.png.jpeg…]()
 
+![CampusMarket Favourites](favourites.jpg.jpeg)
 
 ### Messages
-![Uploading Messeges.png.jpeg…]()
 
+![CampusMarket Messages](messages.jpg.jpeg)
 
 ### Automated Unit Tests
-![Uploading Android Studio test 2.png…]()
 
+![Android Studio Unit Tests](Android%20Studio%20test%202.png)
 
 ### GitHub Actions
-![Uploading OPSC GITHUB.png…]()
+
+![Successful GitHub Actions Build](OPSC%20GITHUB.png)
 
 
 ## Requirements
