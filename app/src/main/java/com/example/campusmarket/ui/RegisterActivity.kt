@@ -1,5 +1,6 @@
 package com.example.campusmarket.ui
 
+import com.example.campusmarket.utils.InputValidator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -42,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.fullNameInputLayout.error = null; binding.emailInputLayout.error = null; binding.passwordInputLayout.error = null; binding.confirmPasswordInputLayout.error = null
         if (name.length < 2) { binding.fullNameInputLayout.error = "Enter your full name"; return }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) { binding.emailInputLayout.error = "Enter a valid email address"; return }
-        if (password.length < 6) { binding.passwordInputLayout.error = "Password must contain at least 6 characters"; return }
+        if (!InputValidator.validPassword(password)) { binding.passwordInputLayout.error = "Password must contain at least 6 characters"; return }
         if (password != confirm) { binding.confirmPasswordInputLayout.error = "Passwords do not match"; return }
         setLoading(true)
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->

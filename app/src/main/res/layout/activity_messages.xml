@@ -24,7 +24,7 @@
         android:id="@+id/tvEmptyMessages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You have no messages yet."
+        android:text="@string/no_messages"
         android:textColor="@color/campus_text_grey"
         android:textSize="16sp"
         android:visibility="gone"

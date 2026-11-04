@@ -1,8 +1,9 @@
 package com.example.campusmarket.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.campusmarket.model.Product
 import com.example.campusmarket.repository.ProductRepository
@@ -15,9 +16,9 @@ import timber.log.Timber
  * The ViewModel retrieves products from the repository and
  * exposes the result to the Activity.
  */
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ProductRepository()
+    private val repository = ProductRepository(application)
 
     private val _products =
         MutableLiveData<List<Product>>()
@@ -37,6 +38,9 @@ class HomeViewModel : ViewModel() {
     val error: LiveData<String?> =
         _error
 
+    private val _usingOfflineCache = MutableLiveData(false)
+    val usingOfflineCache: LiveData<Boolean> = _usingOfflineCache
+
     /**
      * Loads products from the REST API.
      */
@@ -51,11 +55,12 @@ class HomeViewModel : ViewModel() {
                 val result =
                     repository.getProducts()
 
-                _products.value = result
+                _products.value = result.products
+                _usingOfflineCache.value = result.fromCache
                 _error.value = null
 
                 Timber.d(
-                    "API response received: ${result.size} products"
+                    "Catalogue response received: ${result.products.size} products; cache=${result.fromCache}"
                 )
 
             } catch (exception: Exception) {

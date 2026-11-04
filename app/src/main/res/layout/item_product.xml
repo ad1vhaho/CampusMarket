@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Good condition"
+                android:text="@string/good_condition"
                 android:textColor="@color/campus_text_grey"
                 android:textSize="12sp" />
 

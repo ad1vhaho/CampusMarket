@@ -1,10 +1,14 @@
 package com.example.campusmarket.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,6 +20,12 @@ import com.example.campusmarket.viewmodel.HomeViewModel
 import com.example.campusmarket.repository.ListingRepository
 import com.example.campusmarket.model.Category
 import com.example.campusmarket.model.Product
+import com.example.campusmarket.notifications.NotificationHelper
+import com.example.campusmarket.offline.NetworkMonitor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -38,6 +48,16 @@ class HomeActivity : AppCompatActivity() {
     private var listingProducts = emptyList<Product>()
     private val listingRepository = ListingRepository()
     private var selectedCategory = "All"
+    private lateinit var networkMonitor: NetworkMonitor
+    private var wasOffline = false
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            Toast.makeText(
+                this,
+                if (granted) R.string.notifications_enabled else R.string.notifications_permission_denied,
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +75,7 @@ class HomeActivity : AppCompatActivity() {
         setupHeaderButtons()
         setupSearch()
         observeProducts()
+        setupOfflineAndNotifications()
 
         homeViewModel.loadProducts()
     }
@@ -62,6 +83,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadMarketplaceListings()
+    }
+
+    override fun onDestroy() {
+        if (::networkMonitor.isInitialized) networkMonitor.stop()
+        super.onDestroy()
     }
 
     /**
@@ -155,6 +181,11 @@ class HomeActivity : AppCompatActivity() {
                     "Product loading error: $errorMessage"
                 )
             }
+        }
+
+        homeViewModel.usingOfflineCache.observe(this) { fromCache ->
+            binding.tvSyncStatus.visibility = if (fromCache) android.view.View.VISIBLE else android.view.View.GONE
+            if (fromCache) binding.tvSyncStatus.setText(R.string.offline_catalogue_message)
         }
     }
 
@@ -307,17 +338,51 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btnNotifications.setOnClickListener {
-
-            Toast.makeText(
+            requestNotificationPermission()
+            NotificationHelper.showMessage(
                 this,
-                "No new notifications.",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            Timber.d(
-                "Notifications button clicked"
+                getString(R.string.notifications_ready_title),
+                getString(R.string.notifications_ready_message),
+                1001
             )
         }
+    }
+
+    private fun setupOfflineAndNotifications() {
+        networkMonitor = NetworkMonitor(this) { online ->
+            runOnUiThread {
+                if (!online) {
+                    wasOffline = true
+                    binding.tvSyncStatus.visibility = android.view.View.VISIBLE
+                    binding.tvSyncStatus.setText(R.string.offline_catalogue_message)
+                } else if (wasOffline) {
+                    wasOffline = false
+                    binding.tvSyncStatus.visibility = android.view.View.VISIBLE
+                    binding.tvSyncStatus.setText(R.string.syncing_message)
+                    homeViewModel.loadProducts()
+                    loadMarketplaceListings()
+                    binding.tvSyncStatus.postDelayed({
+                        binding.tvSyncStatus.visibility = android.view.View.GONE
+                    }, 2500)
+                }
+            }
+        }
+        networkMonitor.start()
+        requestNotificationPermission()
+
+        FirebaseMessaging.getInstance().subscribeToTopic("campus_market_updates")
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+            FirebaseAuth.getInstance().currentUser?.uid?.let { uid ->
+                FirebaseFirestore.getInstance().collection("users").document(uid)
+                    .set(mapOf("fcmToken" to token), SetOptions.merge())
+            }
+        }
+    }
+
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
     private fun loadMarketplaceListings() {

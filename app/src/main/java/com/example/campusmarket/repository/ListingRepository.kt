@@ -33,12 +33,16 @@ class ListingRepository {
                 id = documentReference.id
             )
 
+        // Firestore accepts this write into its local queue immediately. If the device is
+        // offline it is uploaded automatically after connectivity returns.
         documentReference
             .set(listingWithId)
-            .await()
+            .addOnFailureListener { error ->
+                Timber.e(error, "Queued listing failed: ${documentReference.id}")
+            }
 
         Timber.d(
-            "Listing saved with ID: ${documentReference.id}"
+            "Listing queued with ID: ${documentReference.id}"
         )
     }
 
