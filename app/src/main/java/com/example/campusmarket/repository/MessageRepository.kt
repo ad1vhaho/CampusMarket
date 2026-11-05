@@ -25,29 +25,32 @@ class MessageRepository {
         userId: String
     ): List<Conversation> {
 
-        val snapshot =
-            firestore
-                .collection("conversations")
-                .whereArrayContains(
-                    "participantIds",
-                    userId
-                )
-                .get()
-                .await()
+        val snapshot = firestore
+            .collection("conversations")
+            .whereArrayContains("participantIds", userId)
+            .get()
+            .await()
 
         return snapshot.documents.mapNotNull { document ->
-                document.toObject(Conversation::class.java)?.let { conversation ->
-                    val otherId = conversation.participantIds.firstOrNull { it != userId }.orEmpty()
-                    conversation.copy(
-                        otherUserId = otherId,
-                        otherUserName = conversation.participantNames[otherId]
-                            ?: conversation.otherUserName.ifBlank { "CampusMarket User" }
-                    )
-                }
-            }
-            .sortedByDescending {
-                it.updatedAt
-            }
+            val conversation =
+                document.toObject(Conversation::class.java)
+                    ?: return@mapNotNull null
+
+            val otherId = conversation.participantIds
+                .firstOrNull { it != userId }
+                .orEmpty()
+
+            conversation.copy(
+                id = document.id,
+                otherUserId = otherId,
+                otherUserName = conversation.participantNames[otherId]
+                    ?: conversation.otherUserName.ifBlank {
+                        "CampusMarket User"
+                    }
+            )
+        }.sortedByDescending {
+            it.updatedAt
+        }
     }
 
     /**
