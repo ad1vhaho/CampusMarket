@@ -1,5 +1,6 @@
 package com.example.campusmarket.ui
 
+import com.example.campusmarket.utils.InputValidator
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -263,10 +264,7 @@ class SellItemActivity : AppCompatActivity() {
             return false
         }
 
-        val price =
-            priceText.toDoubleOrNull()
-
-        if (price == null || price <= 0) {
+        if (!InputValidator.validPrice(priceText)) {
 
             binding.priceInputLayout.error =
                 "Enter a valid price"

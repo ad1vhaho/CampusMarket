@@ -19,7 +19,7 @@
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Menu"
+            android:contentDescription="@string/menu"
             android:padding="10dp"
             android:src="@drawable/ic_menu"
             app:tint="@color/campus_text_black" />
@@ -35,14 +35,14 @@
                 android:id="@+id/ivHomeLogo"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:contentDescription="CampusMarket logo"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_campus_market_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
-                android:text="CampusMarket"
+                android:text="@string/app_name"
                 android:textColor="@color/campus_green_dark"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Notifications"
+            android:contentDescription="@string/notifications"
             android:padding="10dp"
             android:src="@drawable/ic_notifications"
             app:tint="@color/campus_text_black" />
@@ -72,6 +72,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/tvSyncStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/campus_green_light"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/offline_catalogue_message"
+                android:textColor="@color/campus_green_dark"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -95,7 +107,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:contentDescription="Search"
+                        android:contentDescription="@string/search_hint"
                         android:src="@drawable/ic_search"
                         app:tint="@color/campus_text_grey" />
 
@@ -106,7 +118,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="Search for e.g. textbook..."
+                        android:hint="@string/search_hint"
                         android:inputType="text"
                         android:maxLines="1"
                         android:padding="0dp"
@@ -138,7 +150,7 @@
                         android:id="@+id/chipAll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="All"
+                        android:text="@string/category_all"
                         android:textColor="@color/campus_text_black"
                         app:checkedIconVisible="false" />
 
@@ -146,7 +158,7 @@
                         android:id="@+id/chipBooks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Books"
+                        android:text="@string/category_books"
                         android:textColor="@color/campus_text_black"
                         app:checkedIconVisible="false" />
 
@@ -154,7 +166,7 @@
                         android:id="@+id/chipElectronics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Electronics"
+                        android:text="@string/category_electronics"
                         android:textColor="@color/campus_text_black"
                         app:checkedIconVisible="false" />
 
@@ -162,7 +174,7 @@
                         android:id="@+id/chipClothing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Clothing"
+                        android:text="@string/category_clothing"
                         android:textColor="@color/campus_text_black"
                         app:checkedIconVisible="false" />
 
@@ -175,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="22dp"
-                android:text="Recommended for you"
+                android:text="@string/recommended_for_you"
                 android:textColor="@color/campus_text_black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -195,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Recent Listings"
+                android:text="@string/recent_listings"
                 android:textColor="@color/campus_text_black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -217,10 +229,12 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
+        android:minHeight="74dp"
         android:background="@color/campus_background"
         app:itemIconTint="@color/campus_text_grey"
         app:itemTextColor="@color/campus_text_grey"
+        app:labelMaxLines="2"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 

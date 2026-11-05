@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.campusmarket.databinding.ActivitySettingsBinding
+import com.example.campusmarket.R
 import com.example.campusmarket.utils.SettingsDataStore
+import com.example.campusmarket.utils.SupportedLanguage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 import android.text.InputType
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -107,6 +110,12 @@ class SettingsActivity : AppCompatActivity() {
                         )
                 }
 
+                if (enabled) {
+                    FirebaseMessaging.getInstance().subscribeToTopic("campus_market_updates")
+                } else {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("campus_market_updates")
+                }
+
                 Timber.d(
                     "Notifications enabled: $enabled"
                 )
@@ -155,16 +164,22 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun showLanguageDialog() {
-        val names = arrayOf("English", "Afrikaans", "isiZulu", "Tshivenda")
-        val tags = arrayOf("en", "af", "zu", "ve")
+        val languages = SupportedLanguage.entries
+        val names = languages.map { getString(languageName(it)) }.toTypedArray()
         androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Choose language")
+            .setTitle(R.string.choose_language)
             .setItems(names) { _, position ->
-                getSharedPreferences("campus_settings", MODE_PRIVATE).edit()
-                    .putString("language_name", names[position]).apply()
                 binding.tvLanguage.text = names[position]
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tags[position]))
+                AppCompatDelegate.setApplicationLocales(
+                    LocaleListCompat.forLanguageTags(languages[position].tag)
+                )
             }.show()
+    }
+
+    private fun languageName(language: SupportedLanguage): Int = when (language) {
+        SupportedLanguage.ENGLISH -> R.string.english
+        SupportedLanguage.TSHIVENDA -> R.string.tshivenda
+        SupportedLanguage.AFRIKAANS -> R.string.afrikaans
     }
 
     private fun showChangePasswordDialog() {
@@ -215,8 +230,8 @@ class SettingsActivity : AppCompatActivity() {
                 .isChecked =
                 darkModeEnabled
 
-            binding.tvLanguage.text = getSharedPreferences("campus_settings", MODE_PRIVATE)
-                .getString("language_name", "English")
+            val locale = AppCompatDelegate.getApplicationLocales()[0]
+            binding.tvLanguage.setText(languageName(SupportedLanguage.fromTag(locale?.language.orEmpty())))
 
             applyDarkMode(
                 darkModeEnabled

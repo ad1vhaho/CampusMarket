@@ -6,6 +6,11 @@ object InputValidator {
 
     fun validPassword(password: String): Boolean = password.length >= 6
 
+    fun validPrice(price: String): Boolean {
+        val amount = price.toDoubleOrNull() ?: return false
+        return amount.isFinite() && amount > 0.0
+    }
+
     fun validListing(
         title: String,
         category: String,
@@ -13,5 +18,5 @@ object InputValidator {
         price: String,
         description: String
     ): Boolean = title.isNotBlank() && category.isNotBlank() && condition.isNotBlank() &&
-        (price.toDoubleOrNull() ?: 0.0) > 0.0 && description.isNotBlank()
+        validPrice(price) && description.isNotBlank()
 }

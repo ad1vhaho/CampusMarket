@@ -13,7 +13,28 @@
           "package_name": "com.example.campusmarket"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "852178762308-6j0klk8oldh0jn11r3ojbe7ir8gi6hq9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campusmarket",
+            "certificate_hash": "5f3b9a2bf4b34270112e54b445e3dcdaaaf5187f"
+          }
+        },
+        {
+          "client_id": "852178762308-fc1mljak9frqdgrt890cth4n1fnf216k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campusmarket",
+            "certificate_hash": "64746a83fa20abc01587917819100c3a58ed7a0e"
+          }
+        },
+        {
+          "client_id": "852178762308-abo6ktupv7l50auj8fpjnl6hvak0j0im.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDVjLVcCNzPlba47YOunaOu4liJHu7Gb08"
@@ -21,7 +42,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852178762308-abo6ktupv7l50auj8fpjnl6hvak0j0im.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,5 +1,6 @@
 package com.example.campusmarket.ui
 
+import com.example.campusmarket.utils.InputValidator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -11,6 +12,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -21,7 +24,19 @@ class LoginActivity : AppCompatActivity() {
         setLoading(true)
         auth.signInWithCredential(GoogleAuthProvider.getCredential(token, null)).addOnCompleteListener { task ->
             setLoading(false)
-            if (task.isSuccessful) openHome() else message(task.exception?.localizedMessage ?: "Google Sign-In failed.")
+            if (task.isSuccessful) {
+                auth.currentUser?.let { user ->
+                    FirebaseFirestore.getInstance().collection("users").document(user.uid).set(
+                        mapOf(
+                            "displayName" to (user.displayName ?: ""),
+                            "email" to (user.email ?: ""),
+                            "lastLoginAt" to System.currentTimeMillis()
+                        ),
+                        SetOptions.merge()
+                    )
+                }
+                openHome()
+            } else message(task.exception?.localizedMessage ?: "Google Sign-In failed.")
         }
     }
 
@@ -40,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.etPassword.text?.toString().orEmpty()
         binding.emailInputLayout.error = null; binding.passwordInputLayout.error = null
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) { binding.emailInputLayout.error = "Enter a valid email address"; return }
-        if (password.length < 6) { binding.passwordInputLayout.error = "Password must contain at least 6 characters"; return }
+        if (!InputValidator.validPassword(password)) { binding.passwordInputLayout.error = "Password must contain at least 6 characters"; return }
         setLoading(true)
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             setLoading(false)

@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CampusMarket"
+                    android:text="@string/app_name"
                     android:textColor="@color/campus_green_dark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="BUY. SELL. STUDENT."
+                    android:text="@string/brand_tagline"
                     android:textColor="@color/campus_text_grey"
                     android:textSize="9sp"
                     android:letterSpacing="0.08" />
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textColor="@color/campus_text_black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Create your account to start buying and selling"
+            android:text="@string/create_account_intro"
             android:textColor="@color/campus_text_grey"
             android:textSize="15sp" />
 
@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
             app:boxStrokeColor="@color/campus_green_dark">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:hint="Email"
+            android:hint="@string/email"
             app:boxStrokeColor="@color/campus_green_dark">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:boxStrokeColor="@color/campus_green_dark"
             app:endIconMode="password_toggle">
 
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             app:boxStrokeColor="@color/campus_green_dark"
             app:endIconMode="password_toggle">
 
@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="24dp"
-            android:text="Register"
+            android:text="@string/register"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -192,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="or"
+            android:text="@string/or"
                 android:textColor="@color/campus_text_grey"
                 android:textSize="14sp" />
 
@@ -210,7 +210,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="24dp"
-            android:text="Continue with Google"
+            android:text="@string/continue_with_google"
             android:textSize="15sp"
             app:icon="@drawable/ic_google"
             app:iconGravity="textStart"
@@ -227,7 +227,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account? "
+                android:text="@string/already_have_account"
                 android:textColor="@color/campus_text_grey"
                 android:textSize="14sp" />
 
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Log In"
+                android:text="@string/log_in"
                 android:textColor="@color/campus_green_dark"
                 android:textSize="14sp"
                 android:textStyle="bold" />

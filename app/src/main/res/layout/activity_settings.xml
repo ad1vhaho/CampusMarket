@@ -43,7 +43,7 @@
                 android:paddingTop="24dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:text="ACCOUNT"
+                android:text="@string/account_heading"
                 android:textColor="@color/campus_green_dark"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Edit Profile"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -98,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Change Password"
+                    android:text="@string/change_password"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -118,7 +118,7 @@
                 android:paddingTop="28dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:text="PREFERENCES"
+                android:text="@string/preferences_heading"
                 android:textColor="@color/campus_green_dark"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -137,7 +137,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Language"
+                    android:text="@string/language"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
                     android:id="@+id/tvLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="English"
+                    android:text="@string/english"
                     android:textColor="@color/campus_text_grey"
                     android:textSize="15sp" />
 
@@ -170,7 +170,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Notifications"
+                    android:text="@string/notifications"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -202,7 +202,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Dark Mode"
+                    android:text="@string/dark_mode"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -222,7 +222,7 @@
                 android:paddingTop="28dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:text="SUPPORT"
+                android:text="@string/support_heading"
                 android:textColor="@color/campus_green_dark"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -243,7 +243,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Help Centre"
+                    android:text="@string/help_centre"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -277,7 +277,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="About CampusMarket"
+                    android:text="@string/about_campus_market"
                     android:textColor="@color/campus_text_black"
                     android:textSize="16sp" />
 
@@ -297,7 +297,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textColor="@color/campus_red"
                 app:backgroundTint="@color/campus_background"
                 app:cornerRadius="12dp"
