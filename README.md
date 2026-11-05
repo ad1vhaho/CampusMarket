@@ -1,4 +1,4 @@
-# CampusMarket
+﻿# CampusMarket
 
 CampusMarket is a native Kotlin Android marketplace where students can discover products, publish listings, save favourites and communicate with sellers. Version 2.0 is the final Part 3 release and adds Google single sign-on, offline catalogue access and Firestore synchronisation, real-time notifications, and English, Tshivenda and Afrikaans language support.
 
@@ -46,7 +46,7 @@ Firebase Cloud Messaging is used for remote notifications. The app also listens 
 7. Publish `firestore.rules` from the Firebase console or Firebase CLI.
 8. Run the app, allow notifications, and verify that the signed-in user's `users/{uid}` document contains `fcmToken`.
 
-The submitted Part 2 configuration contained no OAuth client. Google Sign-In will only work after steps 2–6 are completed.
+The submitted Part 2 configuration contained no OAuth client. Google Sign-In will only work after steps 2â€“6 are completed.
 
 ## Testing offline mode
 
@@ -99,7 +99,7 @@ Version 2.0 uses `versionCode 2`. Generate a signed Android App Bundle in Androi
 
 ## Demonstration video
 
-Replace this line with the final Part 3 unlisted YouTube link after recording.
+https://youtu.be/UPP6GSY2MHs
 
 ## Part 2 video
 
@@ -108,3 +108,4 @@ https://youtu.be/WZzDPLUCt5k
 ## AI-use disclosure
 
 Our short AI-use disclosure is available in [`docs/AI_USE.md`](docs/AI_USE.md).
+
